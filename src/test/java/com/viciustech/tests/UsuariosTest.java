@@ -3,11 +3,11 @@ package com.viciustech.tests;
 import com.viciustech.models.Usuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class UsuariosTest extends BaseTest {
 
@@ -21,11 +21,7 @@ public class UsuariosTest extends BaseTest {
             .then()
             .statusCode(200)
             // Validações do Corpo da Resposta (Payload)
-            .body("quantidade", is(notNullValue()))
-            .body("quantidade", is(greaterThanOrEqualTo(0)))
-            .body("usuarios", is(notNullValue()))
-            .body("usuarios[0]", hasKey("nome"))
-            .body("usuarios[0]", hasKey("_id"));
+            .body(matchesJsonSchemaInClasspath("schemas/usuarios-get-schema.json"));
     }
 
     @Test
