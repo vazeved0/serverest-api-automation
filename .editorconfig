@@ -1,0 +1,22 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.java]
+# Mantém as quebras de linha que você fizer manualmente
+ij_java_keep_line_breaks = true
+
+# Alinha os métodos pelo ponto (.) um embaixo do outro
+ij_java_align_multiline_chained_methods = true
+
+# Força cada método do RestAssured a pular para a linha de baixo
+ij_java_method_call_chain_wrap = on_every_item
+
+# Garante que o ponto fique na nova linha (ajuste de compatibilidade)
+ij_java_wrap_first_method_in_call_chain = true
